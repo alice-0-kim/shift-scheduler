@@ -69,7 +69,7 @@ class AvailabilityState extends State<Availability> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: daysOfWeek.map((day) =>
             ListTile(
-              title: Text(day.toUpperCase(), style: textStyle),
+              title: Text(day.toUpperCase(), style: titleBold),
               trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => TimeSlot()),);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schedule/style.dart';
 
 class Calendar extends StatefulWidget {
   Calendar({Key key, this.year, this.month, this.date}): super(key: key);
@@ -24,19 +25,11 @@ class CalendarState extends State<Calendar> {
   static int currentDaysOfMonth = getDaysOfMonth(currentMonth);
 
   static int getDaysOfMonth(int month) {
-//    return month == 1 ? 28 : (month % 2 == 0 ? (month < 7 ? 31 : 30) : (month > 6 ? 31 : 30));
     return month == 2 ? 28 : (month % 2 == 1 && month < 8 || month % 2 == 0 && month > 7? 31 : 30);
   }
 
-//  void _updateDaysOfMonth() {
-//    currentDaysOfMonth =
-//      currentMonth == 1 ? 28 : (currentMonth % 2 == 0 ? (currentMonth < 7 ? 31 : 30) : (currentMonth > 6 ? 31 : 30));
-//  }
-
   String _getText(int index) {
     DateTime dateTime = DateTime(currentYear, currentMonth);
-//    print('$currentYear, $currentMonth');
-//    print(dateTime.weekday);
     int daysOfLastMonth = getDaysOfMonth(currentMonth == 0 ? 11 : currentMonth - 1);
     if (index < dateTime.weekday - 1) return '${daysOfLastMonth - dateTime.weekday + index + 2}';
     return index < currentDaysOfMonth + dateTime.weekday - 1 ? '${index + 2 - dateTime.weekday}' : '${(index + 2 - dateTime.weekday) % currentDaysOfMonth}';
@@ -44,9 +37,7 @@ class CalendarState extends State<Calendar> {
 
   Color _getColor(int index) {
     DateTime dateTime = DateTime(currentYear, currentMonth);
-//    print('$currentYear, $currentMonth');
-//    print(dateTime.weekday);
-    int daysOfLastMonth = getDaysOfMonth(currentMonth == 0 ? 11 : currentMonth - 1);
+    if (index == currentDate) return Colors.white;
     if (index < dateTime.weekday - 1) return Colors.black38;
     return index < currentDaysOfMonth + dateTime.weekday - 1 ? Colors.black : Colors.black38;
   }
@@ -63,7 +54,7 @@ class CalendarState extends State<Calendar> {
             });
           }),
         ),
-        Expanded(child: Text(months[currentMonth-1], textAlign: TextAlign.center,), ),
+        Expanded(child: Text(months[currentMonth-1].toUpperCase(), textAlign: TextAlign.center, style: titleBold,), ),
         Expanded(
           child: IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed: () {
             setState(() {
@@ -92,38 +83,28 @@ class CalendarState extends State<Calendar> {
   }
 
   Widget _buildEntry() {
-    return Container(
-      decoration: BoxDecoration(
-//        border: Border.all(),
-      ),
-      child: GridView.count(
-        // Create a grid with 2 columns. If you change the scrollDirection to
-        // horizontal, this produces 2 rows.
-        crossAxisCount: 7,
-        // Generate 100 widgets that display their index in the List.
-        children: List.generate(42, (index) {
-          return GestureDetector(
-            onTap: () {
-              setState(() {
-                currentDate = index;
-              });
-            },
-            child: Container(
-              alignment: AlignmentDirectional.center,
-              decoration: BoxDecoration(
-//                border: Border.all(),
-                shape: BoxShape.circle,
-                color: index == currentDate ? Colors.redAccent : Colors.transparent,
-              ),
-              padding: EdgeInsets.all(5),
-              // '${index < currentDaysOfMonth ? index + 1 : (index + 1) % currentDaysOfMonth}'
-              // index < currentDaysOfMonth ? Colors.black : Colors.black38
-              child: Text(_getText(index), style: TextStyle(color: _getColor(index)), textAlign: TextAlign.center,),
+    return GridView.count(
+      crossAxisCount: 7,
+      children: List.generate(42, (index) {
+        return GestureDetector(
+          onTap: () {
+            setState(() {
+              currentDate = index;
+            });
+          },
+          child: Container(
+            alignment: AlignmentDirectional.center,
+            margin: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: index == currentDate ? Colors.redAccent : Colors.transparent,
             ),
-          );
-        }),
-        shrinkWrap: true,
-      ),
+            padding: EdgeInsets.all(5),
+            child: Text(_getText(index), style: TextStyle(color: _getColor(index)), textAlign: TextAlign.center,),
+          ),
+        );
+      }),
+      shrinkWrap: true,
     );
   }
 
@@ -135,13 +116,13 @@ class CalendarState extends State<Calendar> {
           Row(
             children: <Widget>[
               Icon(Icons.fiber_manual_record, color: Colors.redAccent,),
-              Text('1:00 PM - 5:30 PM'),
+              Text('1:00 PM - 5:30 PM', style: titleBold,),
             ],
           ),
           Row(
             children: <Widget>[
               Icon(Icons.fiber_manual_record, color: Colors.redAccent,),
-              Text('7:00 PM - 9:30 PM'),
+              Text('7:00 PM - 9:30 PM', style: titleBold,),
             ],
           ),
         ],
@@ -150,7 +131,6 @@ class CalendarState extends State<Calendar> {
   }
 
   Widget _buildCalendar(int month) {
-//    DateTime dateTime = DateTime(widget.year, widget.month, widget.date);
     return Column(
       children: <Widget>[
         _buildTitle(month),

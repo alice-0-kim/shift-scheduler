@@ -47,21 +47,21 @@ class DashboardState extends State<Dashboard> {
           ],
         ),
         ListTile(
-          title: Text('Calendar'.toUpperCase(), style: textStyle,),
+          title: Text('Calendar'.toUpperCase(), style: titleBold,),
           trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => Page()),);
           },
         ),
         ListTile(
-          title: Text('Availability'.toUpperCase(), style: textStyle,),
+          title: Text('Availability'.toUpperCase(), style: titleBold,),
           trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => Availability()),);
           },
         ),
         ListTile(
-          title: Text('Look for a cover'.toUpperCase(), style: textStyle,),
+          title: Text('Look for a cover'.toUpperCase(), style: titleBold,),
           trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => Find()),);
