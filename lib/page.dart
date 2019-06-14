@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:schedule/calendar.dart';
 
 class Page extends StatefulWidget {
-  final String title = 'Calendar';
+  Page({Key key, this.title, this.body}): super(key: key);
+  final String title;
+  final Widget body;
 
   @override
   State<StatefulWidget> createState() => PageState();
@@ -21,14 +22,6 @@ class PageState extends State<Page> {
   }
 
   Widget _buildBody(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints.expand(),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Calendar(),
-        ],
-      ),
-    );
+    return widget.body;
   }
 }

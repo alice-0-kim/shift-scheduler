@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:schedule/calendar.dart';
+import 'package:schedule/page.dart';
+import 'package:schedule/profile.dart';
 import 'package:schedule/style.dart';
-
-import 'package:url_launcher/url_launcher.dart';
 
 final double padding = 50, fontSize = 18;
 
@@ -167,69 +167,84 @@ class ThirdStep extends StatelessWidget {
             ),
             ListTile(
               title: Text('Jane Doe'.toUpperCase(), style: titleBold,),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 2.5),
-                    child: IconButton(
-                      icon: Icon(Icons.call, color: Colors.black,),
-                      onPressed: () => launch("tel://7789887498"),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 2.5),
-                    child: IconButton(
-                      icon: Icon(Icons.email, color: Colors.black,),
-                      onPressed: () => launch("tel://7789887498"),
-                    ),
-                  ),
-                ],
-              ),
+//              trailing: Row(
+//                mainAxisSize: MainAxisSize.min,
+//                children: <Widget>[
+//                  Padding(
+//                    padding: EdgeInsets.symmetric(horizontal: 2.5),
+//                    child: IconButton(
+//                      icon: Icon(Icons.call, color: Colors.black,),
+//                      onPressed: () => launch("tel://7789887498"),
+//                    ),
+//                  ),
+//                  Padding(
+//                    padding: EdgeInsets.symmetric(horizontal: 2.5),
+//                    child: IconButton(
+//                      icon: Icon(Icons.email, color: Colors.black,),
+//                      onPressed: () => launch("tel://7789887498"),
+//                    ),
+//                  ),
+//                ],
+//              ),
+              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                    Page(title: 'Profile', body: Profile(name: 'Jane Doe', profession: 'Part-time employee', phone: '111.111.1111', email: 'jane.doe@mail.com'))),);
+              },
             ),
             ListTile(
               title: Text('Dana Smith'.toUpperCase(), style: titleBold,),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 2.5),
-                    child: IconButton(
-                      icon: Icon(Icons.call, color: Colors.black,),
-                      onPressed: () => launch("tel://7789887498"),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 2.5),
-                    child: IconButton(
-                      icon: Icon(Icons.email, color: Colors.black,),
-                      onPressed: () => launch("tel://7789887498"),
-                    ),
-                  ),
-                ],
-              ),
+//              trailing: Row(
+//                mainAxisSize: MainAxisSize.min,
+//                children: <Widget>[
+//                  Padding(
+//                    padding: EdgeInsets.symmetric(horizontal: 2.5),
+//                    child: IconButton(
+//                      icon: Icon(Icons.call, color: Colors.black,),
+//                      onPressed: () => launch("tel://7789887498"),
+//                    ),
+//                  ),
+//                  Padding(
+//                    padding: EdgeInsets.symmetric(horizontal: 2.5),
+//                    child: IconButton(
+//                      icon: Icon(Icons.email, color: Colors.black,),
+//                      onPressed: () => launch("tel://7789887498"),
+//                    ),
+//                  ),
+//                ],
+//              ),
+              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                    Page(title: 'Profile', body: Profile(name: 'Dana Smith', profession: 'Owner', phone: '111.111.1111', email: 'jane.doe@mail.com'))),);
+              },
             ),
             ListTile(
               title: Text('Ella Johnson'.toUpperCase(), style: titleBold,),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 2.5),
-                    child: IconButton(
-                      icon: Icon(Icons.call, color: Colors.black,),
-                      onPressed: () => launch("tel://7789887498"),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 2.5),
-                    child: IconButton(
-                      icon: Icon(Icons.email, color: Colors.black,),
-                      onPressed: () => launch("tel://7789887498"),
-                    ),
-                  ),
-                ],
-              ),
+//              trailing: Row(
+//                mainAxisSize: MainAxisSize.min,
+//                children: <Widget>[
+//                  Padding(
+//                    padding: EdgeInsets.symmetric(horizontal: 2.5),
+//                    child: IconButton(
+//                      icon: Icon(Icons.call, color: Colors.black,),
+//                      onPressed: () => launch("tel://7789887498"),
+//                    ),
+//                  ),
+//                  Padding(
+//                    padding: EdgeInsets.symmetric(horizontal: 2.5),
+//                    child: IconButton(
+//                      icon: Icon(Icons.email, color: Colors.black,),
+//                      onPressed: () => launch("tel://7789887498"),
+//                    ),
+//                  ),
+//                ],
+//              ),
+              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                    Page(title: 'Profile', body: Profile(name: 'Ella Johnson', profession: 'Store manager', phone: '111.111.1111', email: 'jane.doe@mail.com'))),);
+              },
             ),
           ],
         ),

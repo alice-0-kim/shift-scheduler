@@ -50,7 +50,7 @@ class DashboardState extends State<Dashboard> {
           title: Text('Calendar'.toUpperCase(), style: titleBold,),
           trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Page()),);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Page(title: 'Calendar', body: Calendar.today())),);
           },
         ),
         ListTile(

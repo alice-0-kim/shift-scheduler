@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schedule/page.dart';
 import 'dashboard.dart';
 import 'profile.dart';
 
@@ -28,9 +29,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int currentIndex = 0;
+  int currentIndex = 1;
   final List<String> titles = ['Profile', 'Dashboard', 'Message'];
-  final List<Widget> children = [Profile(), Dashboard(), Container()];
+  final List<Widget> children = [
+    Profile(name: 'Jane Doe', profession: 'Part-time employee', phone: '111.111.1111', email: 'jane.doe@mail.com'),
+    Dashboard(),
+    Container()];
 
   @override
   Widget build(BuildContext context) {
