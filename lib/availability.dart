@@ -70,7 +70,7 @@ class AvailabilityState extends State<Availability> {
         children: daysOfWeek.map((day) =>
             ListTile(
               title: Text(day.toUpperCase(), style: textStyle),
-              trailing: Icon(Icons.keyboard_arrow_right),
+              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => TimeSlot()),);
               },

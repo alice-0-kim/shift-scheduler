@@ -94,7 +94,7 @@ class CalendarState extends State<Calendar> {
   Widget _buildEntry() {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(),
+//        border: Border.all(),
       ),
       child: GridView.count(
         // Create a grid with 2 columns. If you change the scrollDirection to
@@ -109,14 +109,16 @@ class CalendarState extends State<Calendar> {
               });
             },
             child: Container(
+              alignment: AlignmentDirectional.center,
               decoration: BoxDecoration(
-                border: Border.all(),
+//                border: Border.all(),
+                shape: BoxShape.circle,
                 color: index == currentDate ? Colors.redAccent : Colors.transparent,
               ),
               padding: EdgeInsets.all(5),
               // '${index < currentDaysOfMonth ? index + 1 : (index + 1) % currentDaysOfMonth}'
               // index < currentDaysOfMonth ? Colors.black : Colors.black38
-              child: Text(_getText(index), style: TextStyle(color: _getColor(index)),),
+              child: Text(_getText(index), style: TextStyle(color: _getColor(index)), textAlign: TextAlign.center,),
             ),
           );
         }),
@@ -161,15 +163,9 @@ class CalendarState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Calendar'),
-        elevation: 0,
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: _buildCalendar(widget.month),
-      ),
+    return Padding(
+      padding: EdgeInsets.all(20),
+      child: _buildCalendar(widget.month),
     );
   }
 }

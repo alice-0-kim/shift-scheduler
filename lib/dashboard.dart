@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:schedule/calendar.dart';
 import 'package:schedule/availability.dart';
 import 'package:schedule/chart.dart';
+import 'package:schedule/find.dart';
+import 'package:schedule/page.dart';
 import 'package:schedule/style.dart';
 
 class Dashboard extends StatefulWidget {
@@ -24,7 +26,7 @@ class DashboardState extends State<Dashboard> {
       children: <Widget>[
         Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
-          height: 200.0,
+          height: 300.0,
           child: SimpleTimeSeriesChart.withSampleData(),
         ),
         Row(
@@ -46,21 +48,24 @@ class DashboardState extends State<Dashboard> {
         ),
         ListTile(
           title: Text('Calendar'.toUpperCase(), style: textStyle,),
-          trailing: Icon(Icons.keyboard_arrow_right),
+          trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Calendar.today()),);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Page()),);
           },
         ),
         ListTile(
           title: Text('Availability'.toUpperCase(), style: textStyle,),
-          trailing: Icon(Icons.keyboard_arrow_right),
+          trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => Availability()),);
           },
         ),
         ListTile(
           title: Text('Look for a cover'.toUpperCase(), style: textStyle,),
-          trailing: Icon(Icons.keyboard_arrow_right),
+          trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Find()),);
+          },
         ),
       ],
     );
