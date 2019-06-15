@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schedule/calendar.dart';
 import 'package:schedule/page.dart';
 import 'package:schedule/profile.dart';
-import 'package:schedule/style.dart';
+import 'package:schedule/util.dart';
 
 final double padding = 50, fontSize = 18;
 
@@ -119,6 +119,17 @@ class SecondStep extends StatelessWidget {
 class ThirdStep extends StatelessWidget {
   final String time = '9:00 AM - 12:30 PM';
 
+  Widget _buildEntry(BuildContext context, User user) {
+    return ListTile(
+      title: Text(user.name.toUpperCase(), style: titleBold,),
+      trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent),
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) =>
+            Page(title: 'Profile', body: Profile(name: user.name, profession: user.profession, phone: user.phone, email: user.email))),);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,116 +176,12 @@ class ThirdStep extends StatelessWidget {
                 ),
               ),
             ),
-            ListTile(
-              title: Text('Jane Doe'.toUpperCase(), style: titleBold,),
-//              trailing: Row(
-//                mainAxisSize: MainAxisSize.min,
-//                children: <Widget>[
-//                  Padding(
-//                    padding: EdgeInsets.symmetric(horizontal: 2.5),
-//                    child: IconButton(
-//                      icon: Icon(Icons.call, color: Colors.black,),
-//                      onPressed: () => launch("tel://7789887498"),
-//                    ),
-//                  ),
-//                  Padding(
-//                    padding: EdgeInsets.symmetric(horizontal: 2.5),
-//                    child: IconButton(
-//                      icon: Icon(Icons.email, color: Colors.black,),
-//                      onPressed: () => launch("tel://7789887498"),
-//                    ),
-//                  ),
-//                ],
-//              ),
-              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    Page(title: 'Profile', body: Profile(name: 'Jane Doe', profession: 'Part-time employee', phone: '111.111.1111', email: 'jane.doe@mail.com'))),);
-              },
-            ),
-            ListTile(
-              title: Text('Dana Smith'.toUpperCase(), style: titleBold,),
-//              trailing: Row(
-//                mainAxisSize: MainAxisSize.min,
-//                children: <Widget>[
-//                  Padding(
-//                    padding: EdgeInsets.symmetric(horizontal: 2.5),
-//                    child: IconButton(
-//                      icon: Icon(Icons.call, color: Colors.black,),
-//                      onPressed: () => launch("tel://7789887498"),
-//                    ),
-//                  ),
-//                  Padding(
-//                    padding: EdgeInsets.symmetric(horizontal: 2.5),
-//                    child: IconButton(
-//                      icon: Icon(Icons.email, color: Colors.black,),
-//                      onPressed: () => launch("tel://7789887498"),
-//                    ),
-//                  ),
-//                ],
-//              ),
-              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    Page(title: 'Profile', body: Profile(name: 'Dana Smith', profession: 'Owner', phone: '111.111.1111', email: 'jane.doe@mail.com'))),);
-              },
-            ),
-            ListTile(
-              title: Text('Ella Johnson'.toUpperCase(), style: titleBold,),
-//              trailing: Row(
-//                mainAxisSize: MainAxisSize.min,
-//                children: <Widget>[
-//                  Padding(
-//                    padding: EdgeInsets.symmetric(horizontal: 2.5),
-//                    child: IconButton(
-//                      icon: Icon(Icons.call, color: Colors.black,),
-//                      onPressed: () => launch("tel://7789887498"),
-//                    ),
-//                  ),
-//                  Padding(
-//                    padding: EdgeInsets.symmetric(horizontal: 2.5),
-//                    child: IconButton(
-//                      icon: Icon(Icons.email, color: Colors.black,),
-//                      onPressed: () => launch("tel://7789887498"),
-//                    ),
-//                  ),
-//                ],
-//              ),
-              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    Page(title: 'Profile', body: Profile(name: 'Ella Johnson', profession: 'Store manager', phone: '111.111.1111', email: 'jane.doe@mail.com'))),);
-              },
-            ),
+            for (int i = 0; i < users.length; i++) _buildEntry(context, users[i]),
+//            _buildEntry(context, users[1]),
+//            _buildEntry(context, users[2]),
           ],
         ),
       ),
     );
   }
 }
-
-//class LastStep extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      appBar: AppBar(
-//        title: Text('Look for a cover'),
-//        elevation: 0,
-//      ),
-//      body: _buildBody(context),
-//    );
-//  }
-//
-//  Widget _buildBody(BuildContext context) {
-//    return ConstrainedBox(
-//      constraints: BoxConstraints.expand(),
-//      child: Column(
-//        mainAxisAlignment: MainAxisAlignment.center,
-//        children: <Widget>[
-//          Icon(Icons.check, color: Colors.green,),
-//          Text('Done!'),
-//        ],
-//      ),
-//    );
-//  }
-//}

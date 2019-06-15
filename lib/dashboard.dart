@@ -4,7 +4,7 @@ import 'package:schedule/availability.dart';
 import 'package:schedule/chart.dart';
 import 'package:schedule/find.dart';
 import 'package:schedule/page.dart';
-import 'package:schedule/style.dart';
+import 'package:schedule/util.dart';
 
 class Dashboard extends StatefulWidget {
   final String title = 'Dashboard';

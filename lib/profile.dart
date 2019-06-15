@@ -42,6 +42,7 @@ class ProfileState extends State<Profile> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               IconButton(icon: Icon(Icons.phone), onPressed: () => launch("tel://$phone"),),
+              // TODO message
               IconButton(icon: Icon(Icons.textsms), onPressed: () => launch("tel://$phone"),),
               IconButton(icon: Icon(Icons.email), onPressed: () async {
                 final Email email = Email(

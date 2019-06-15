@@ -1,9 +1,8 @@
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:schedule/timeslot.dart';
-
-import 'style.dart';
+import 'package:schedule/util.dart';
+import 'package:intl/intl.dart';
 
 class Availability extends StatefulWidget {
   final String title = 'Availability';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:schedule/style.dart';
+import 'package:schedule/util.dart';
 
 class Calendar extends StatefulWidget {
   Calendar({Key key, this.year, this.month, this.date}): super(key: key);
