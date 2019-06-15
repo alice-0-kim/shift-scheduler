@@ -71,6 +71,8 @@ List<String> conversation = [
   'Ikr',
   'oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfusd oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfusd oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfusd oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfusd oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfusd',
   'oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfusd oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfu',
+  '🤔',
+  '❤️',
 ];
 
 class Conversation extends StatefulWidget {
@@ -96,42 +98,33 @@ class ConversationState extends State<Conversation> {
     return Stack(
       children: <Widget>[
         ListView(
+          padding: EdgeInsets.symmetric(horizontal: 5),
           children: [
             for (int i = 0; i < conversation.length; i++)
-//              Container(
-//                alignment: i % 2 == 0 ? AlignmentDirectional.centerStart : AlignmentDirectional.centerEnd,
-//                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-//                margin: EdgeInsets.all(5),
-//                decoration: BoxDecoration(
-//                  color: i % 2 == 0 ? Colors.red : Colors.grey[100],
-//                  borderRadius: BorderRadius.circular(15),
-//                ),
-//                child: Text(conversation[i], style: TextStyle(color: i % 2 == 0 ? Colors.white : Colors.black, fontSize: 14),),
-//              ),
               Align (
-//                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 alignment: i % 2 == 0 ? AlignmentDirectional.centerStart : AlignmentDirectional.centerEnd,
                 child: Container(
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                margin: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color: i % 2 == 0 ? Colors.red : Colors.grey[100],
-                  borderRadius: BorderRadius.circular(15),
-                ),
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  margin: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: i % 2 == 0 ? Colors.red : Colors.grey[100],
+                    borderRadius: i % 2 == 0
+                        ? BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10), bottomRight: Radius.circular(10))
+                        : BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10), bottomLeft: Radius.circular(10)),
+                  ),
                   child: Text(
                     conversation[i],
                     style:
                     TextStyle(
                       color: i % 2 == 0 ? Colors.white : Colors.black,
                       fontSize: 14,
-//                      backgroundColor: i % 2 == 0 ? Colors.red : Colors.grey[100],
                     ),
-//                    textAlign: i % 2 == 0 ? TextAlign.left : TextAlign.right,
                   ),
                 ),
               ),
           ],
         ),
+
         Positioned(
           bottom: 0,
           child: Container(
@@ -140,7 +133,7 @@ class ConversationState extends State<Conversation> {
             child: TextField(
               onSubmitted: (String submitted) {
                 setState(() {
-                  // TODO
+                  conversation.add(submitted);
                 });
               },
               decoration: InputDecoration(
@@ -150,6 +143,22 @@ class ConversationState extends State<Conversation> {
             ),
           ),
         ),
+//        Container(
+////          width: MediaQuery.of(context).size.width,
+//          alignment: AlignmentDirectional.bottomCenter,
+//          color: Colors.white,
+//          child: TextField(
+//            onSubmitted: (String submitted) {
+//              setState(() {
+//                // TODO
+//              });
+//            },
+//            decoration: InputDecoration(
+//              contentPadding: const EdgeInsets.all(20.0),
+//              hintText: "Add comment...",
+//            ),
+//          ),
+//        ),
       ],
     );
   }
