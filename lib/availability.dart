@@ -4,6 +4,8 @@ import 'package:schedule/timeslot.dart';
 import 'package:schedule/util.dart';
 import 'package:intl/intl.dart';
 
+final double padding = 50, fontSize = 18;
+
 class Availability extends StatefulWidget {
   final String title = 'Availability';
 
@@ -64,17 +66,20 @@ class AvailabilityState extends State<Availability> {
   Widget _buildBody(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints.expand(),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: daysOfWeek.map((day) =>
-            ListTile(
-              title: Text(day.toUpperCase(), style: titleBold),
-              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => TimeSlot()),);
-              },
-            )
-        ).toList(),
+      child: Container(
+        padding: EdgeInsets.all(padding),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: daysOfWeek.map((day) =>
+              ListTile(
+                title: Text(day.toUpperCase(), style: titleBold),
+                trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => TimeSlot()),);
+                },
+              )
+          ).toList(),
+        ),
       ),
     );
   }
