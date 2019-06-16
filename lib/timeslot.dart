@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
-import 'package:intl/intl.dart';
 
 class TimeSlot extends StatefulWidget {
   @override
@@ -42,22 +41,6 @@ class TimeSlotState extends State<TimeSlot> {
             height: 100,
             child: _buildSlider(context, '6 PM', '9 PM', '12 AM', 18, 24),
           ),
-//          Draggable(
-//            axis: Axis.horizontal,
-//            child: Icon(Icons.wb_sunny, color: Colors.red,),
-//            feedback: Icon(Icons.wb_sunny, color: Colors.redAccent,),
-//          ),
-//          DragTarget(
-//            builder: (context, List<String> candidateData, rejectedData) {
-//              return Container();
-//            },
-//            onWillAccept: (data) {
-//              return true;
-//            },
-//            onAccept: (data) {
-//              print('Hello');
-//            },
-//          ),
         ],
       ),
     );

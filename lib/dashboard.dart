@@ -14,6 +14,12 @@ class Dashboard extends StatefulWidget {
 }
 
 class DashboardState extends State<Dashboard> {
+  List<SimpleTimeSeriesChart> charts = [
+    SimpleTimeSeriesChart.withSampleData(),
+    SimpleTimeSeriesChart.withSampleData(),
+    SimpleTimeSeriesChart.withSampleData(),
+  ];
+  int chartType = 0;
   int currentIndex = 0;
 
   @override
@@ -32,42 +38,59 @@ class DashboardState extends State<Dashboard> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton(
-              onPressed: () {},
-              child: Text('Day'),
-            ),
-            FlatButton(
-              onPressed: () {},
-              child: Text('Month'),
-            ),
-            FlatButton(
-              onPressed: () {},
-              child: Text('Year'),
-            ),
+            _buildButton('Day', 0),
+            _buildButton('Month', 1),
+            _buildButton('Year', 2),
           ],
         ),
-        ListTile(
-          title: Text('Calendar'.toUpperCase(), style: titleBold,),
-          trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
-          onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Page(title: 'Calendar', body: Calendar.today())),);
-          },
-        ),
-        ListTile(
-          title: Text('Availability'.toUpperCase(), style: titleBold,),
-          trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
-          onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Availability()),);
-          },
-        ),
-        ListTile(
-          title: Text('Look for a cover'.toUpperCase(), style: titleBold,),
-          trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
-          onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Find()),);
-          },
-        ),
+        _buildTile('Calendar', toCalendar()),
+        _buildTile('Availability', toAvailability()),
+        _buildTile('Look for a cover', toFind()),
+//        ListTile(
+//          title: Text('Calendar'.toUpperCase(), style: titleBold,),
+//          trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
+//          onTap: () {
+//            Navigator.push(context, MaterialPageRoute(builder: (context) => Page(title: 'Calendar', body: Calendar.today())),);
+//          },
+//        ),
+//        ListTile(
+//          title: Text('Availability'.toUpperCase(), style: titleBold,),
+//          trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
+//          onTap: () {
+//            Navigator.push(context, MaterialPageRoute(builder: (context) => Availability()),);
+//          },
+//        ),
+//        ListTile(
+//          title: Text('Look for a cover'.toUpperCase(), style: titleBold,),
+//          trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
+//          onTap: () {
+//            Navigator.push(context, MaterialPageRoute(builder: (context) => Find()),);
+//          },
+//        ),
       ],
     );
   }
+
+  Widget _buildButton(String title, int type) {
+    return FlatButton(
+      child: Text(title),
+      onPressed: () {
+        setState(() {
+          chartType = type;
+        });
+      },
+    );
+  }
+
+  Widget _buildTile(String title, Function onTap) {
+    return ListTile(
+      title: Text(title.toUpperCase(), style: titleBold,),
+      trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent,),
+      onTap: () => onTap(),
+    );
+  }
+
+  toCalendar() => Navigator.push(context, MaterialPageRoute(builder: (context) => Page(title: 'Calendar', body: Calendar.today())));
+  toAvailability() => Navigator.push(context, MaterialPageRoute(builder: (context) => Availability()),);
+  toFind() => Navigator.push(context, MaterialPageRoute(builder: (context) => Find()),);
 }

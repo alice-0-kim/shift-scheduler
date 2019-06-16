@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:schedule/page.dart';
-import 'package:schedule/profile.dart';
 import 'package:schedule/util.dart';
 
 class Message extends StatefulWidget {
@@ -13,13 +11,8 @@ class MessageState extends State<Message> {
 
   Widget _buildEntry(BuildContext context, User user) {
     return ListTile(
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(user.name.toUpperCase(), style: titleBold,),
-          Text(user.profession),
-        ],
-      ),
+      title: Text(user.name.toUpperCase(), style: titleBold,),
+      subtitle: Text(user.job),
       trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent),
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) =>
@@ -59,18 +52,15 @@ class MessageState extends State<Message> {
 }
 
 List<String> conversation = [
-  'Hi :)',
-  'How\'s life?',
-  'Meh, you?',
-  'Nah',
-  'Good!',
-  'Wanna see something cool',
-  'Sure',
-  'Got a new iPhone',
-  'SHUT UP',
-  'Ikr',
-  'oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfusd oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfusd oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfusd oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfusd oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfusd',
-  'oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfusd oathie a dshq lqeh  kedfsd yehdmdw difjs;pwoq  ndfn ehfdkjzu ebkdhfu',
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  'Non sodales neque sodales ut etiam.',
+  'Sodales ut eu sem integer vitae justo eget magna fermentum.',
+  'Elementum pulvinar etiam non quam lacus suspendisse faucibus interdum posuere.',
+  'At lectus urna duis convallis convallis tellus id interdum velit.',
+  'At elementum eu facilisis sed odio morbi quis commodo.',
+  'Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique.',
+  'Venenatis a condimentum vitae sapien. Risus quis varius quam quisque id diam vel quam.',
+  'Lacus vel facilisis volutpat est velit egestas dui id.',
   '🤔',
   '❤️',
 ];

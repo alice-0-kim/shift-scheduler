@@ -8,7 +8,6 @@ class Calendar extends StatefulWidget {
 
   factory Calendar.today() {
     DateTime today = new DateTime.now();
-    print('Today: ${today.month}');
     return Calendar(year: today.year, month: today.month, date: today.day,);
   }
 
@@ -19,10 +18,21 @@ class Calendar extends StatefulWidget {
 class CalendarState extends State<Calendar> {
   final months = ['Janunary', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   final daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  static int currentYear = 2019;
-  static int currentMonth = 6; // => June
-  static int currentDate = 24;
-  static int currentDaysOfMonth = getDaysOfMonth(currentMonth);
+  static int currentYear, currentMonth, currentDate, currentDaysOfMonth;
+
+  @override
+  initState() {
+    super.initState();
+    initToday();
+  }
+
+  initToday() {
+    currentYear = widget.year;
+    currentMonth = widget.month;
+    DateTime dateTime = DateTime(currentYear, currentMonth);
+    currentDate = widget.date + dateTime.weekday - 2;
+    currentDaysOfMonth = getDaysOfMonth(currentMonth);
+  }
 
   static int getDaysOfMonth(int month) {
     return month == 2 ? 28 : (month % 2 == 1 && month < 8 || month % 2 == 0 && month > 7? 31 : 30);

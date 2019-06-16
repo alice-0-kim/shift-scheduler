@@ -17,11 +17,7 @@ class PageState extends State<Page> {
         title: Text(widget.title),
         elevation: 0,
       ),
-      body: _buildBody(context),
+      body: widget.body,
     );
-  }
-
-  Widget _buildBody(BuildContext context) {
-    return widget.body;
   }
 }

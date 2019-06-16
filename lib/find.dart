@@ -34,9 +34,10 @@ class FirstStep extends State<Find> {
           Text('Choose a date :', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
           Calendar(),
           FlatButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => SecondStep(date: 'May 4th, 2019')),);},
             child: Text('Next'.toUpperCase(), style: titleBold,),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SecondStep(date: 'May 4th, 2019')),);
+            },
           ),
         ],
       ),
@@ -119,16 +120,24 @@ class SecondStep extends StatelessWidget {
 class ThirdStep extends StatelessWidget {
   final String time = '9:00 AM - 12:30 PM';
 
-  Widget _buildEntry(BuildContext context, User user) {
-    return ListTile(
-      title: Text(user.name.toUpperCase(), style: titleBold,),
-      trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent),
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) =>
-            Page(title: 'Profile', body: Profile(name: user.name, profession: user.profession, phone: user.phone, email: user.email))),);
-      },
-    );
-  }
+//  Widget _buildEntry(BuildContext context, User user) {
+//    return ListTile(
+//      title: Text(user.name.toUpperCase(), style: titleBold,),
+//      subtitle: Text(user.job),
+//      trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent),
+////      onTap: () {
+////        Navigator.push(context, MaterialPageRoute(builder: (context) =>
+////            Page(title: 'Profile', body: Profile(user: user,))
+////        ),);
+////      },
+//      onTap: () => onTap(context, user),
+//    );
+//  }
+//
+  onTap(BuildContext context, User user) =>
+      Navigator.push(context, MaterialPageRoute(builder: (context) =>
+          Page(title: 'Profile', body: Profile(user: user,))
+      ),);
 
   @override
   Widget build(BuildContext context) {
@@ -176,9 +185,8 @@ class ThirdStep extends StatelessWidget {
                 ),
               ),
             ),
-            for (int i = 0; i < users.length; i++) _buildEntry(context, users[i]),
-//            _buildEntry(context, users[1]),
-//            _buildEntry(context, users[2]),
+//            for (int i = 0; i < users.length; i++) _buildEntry(context, users[i]),
+            for (int i = 0; i < users.length; i++) users[i].getEntry(context, onTap),
           ],
         ),
       ),

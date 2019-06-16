@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:schedule/message.dart';
-import 'package:schedule/page.dart';
-import 'dashboard.dart';
-import 'profile.dart';
+import 'package:schedule/starter.dart';
+import 'package:schedule/util.dart';
+import 'package:schedule/dashboard.dart';
+import 'package:schedule/profile.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,12 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Scheduler',
       theme: ThemeData(
         primaryColor: Colors.white,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+//      home: MyHomePage(title: 'Scheduler'),
+      home: Starter(),
     );
   }
 }
@@ -33,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int currentIndex = 1;
   final List<String> titles = ['Profile', 'Dashboard', 'Message'];
   final List<Widget> children = [
-    Profile(name: 'Jane Doe', profession: 'Part-time employee', phone: '111.111.1111', email: 'jane.doe@mail.com'),
+    Profile(user: users[0]),
     Dashboard(),
     Message(),
   ];
@@ -42,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(titles[currentIndex]),
+        title: Text(titles[currentIndex], textAlign: TextAlign.center,),
         elevation: 0,
       ),
       body: children[currentIndex],
