@@ -32,7 +32,7 @@ class FirstStep extends State<Find> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text('Choose a date :', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-          Calendar(),
+          Calendar.today(),
           FlatButton(
             child: Text('Next'.toUpperCase(), style: titleBold,),
             onPressed: () {
@@ -120,20 +120,6 @@ class SecondStep extends StatelessWidget {
 class ThirdStep extends StatelessWidget {
   final String time = '9:00 AM - 12:30 PM';
 
-//  Widget _buildEntry(BuildContext context, User user) {
-//    return ListTile(
-//      title: Text(user.name.toUpperCase(), style: titleBold,),
-//      subtitle: Text(user.job),
-//      trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent),
-////      onTap: () {
-////        Navigator.push(context, MaterialPageRoute(builder: (context) =>
-////            Page(title: 'Profile', body: Profile(user: user,))
-////        ),);
-////      },
-//      onTap: () => onTap(context, user),
-//    );
-//  }
-//
   onTap(BuildContext context, User user) =>
       Navigator.push(context, MaterialPageRoute(builder: (context) =>
           Page(title: 'Profile', body: Profile(user: user,))
@@ -185,7 +171,6 @@ class ThirdStep extends StatelessWidget {
                 ),
               ),
             ),
-//            for (int i = 0; i < users.length; i++) _buildEntry(context, users[i]),
             for (int i = 0; i < users.length; i++) users[i].getEntry(context, onTap),
           ],
         ),

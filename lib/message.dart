@@ -15,9 +15,7 @@ class MessageState extends State<Message> {
       subtitle: Text(user.job),
       trailing: Icon(Icons.keyboard_arrow_right, color: Colors.redAccent),
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) =>
-//            Page(title: 'Profile', body: Profile(name: user.name, profession: user.profession, phone: user.phone, email: user.email))
-            Conversation()),);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Conversation()),);
       },
     );
   }
@@ -50,20 +48,6 @@ class MessageState extends State<Message> {
     );
   }
 }
-
-List<String> conversation = [
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  'Non sodales neque sodales ut etiam.',
-  'Sodales ut eu sem integer vitae justo eget magna fermentum.',
-  'Elementum pulvinar etiam non quam lacus suspendisse faucibus interdum posuere.',
-  'At lectus urna duis convallis convallis tellus id interdum velit.',
-  'At elementum eu facilisis sed odio morbi quis commodo.',
-  'Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique.',
-  'Venenatis a condimentum vitae sapien. Risus quis varius quam quisque id diam vel quam.',
-  'Lacus vel facilisis volutpat est velit egestas dui id.',
-  '🤔',
-  '❤️',
-];
 
 class Conversation extends StatefulWidget {
   final String title = 'Conversation';
@@ -133,22 +117,6 @@ class ConversationState extends State<Conversation> {
             ),
           ),
         ),
-//        Container(
-////          width: MediaQuery.of(context).size.width,
-//          alignment: AlignmentDirectional.bottomCenter,
-//          color: Colors.white,
-//          child: TextField(
-//            onSubmitted: (String submitted) {
-//              setState(() {
-//                // TODO
-//              });
-//            },
-//            decoration: InputDecoration(
-//              contentPadding: const EdgeInsets.all(20.0),
-//              hintText: "Add comment...",
-//            ),
-//          ),
-//        ),
       ],
     );
   }

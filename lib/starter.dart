@@ -9,6 +9,7 @@ class Starter extends StatelessWidget {
     return RaisedButton(
       color: themeAccent,
       onPressed: () {
+        currentUser = users[0];
         Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(title: 'Scheduler',)));
       },
       child: Text('Get started', style: TextStyle(color: Colors.white),),

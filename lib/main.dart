@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int currentIndex = 1;
   final List<String> titles = ['Profile', 'Dashboard', 'Message'];
   final List<Widget> children = [
-    Profile(user: users[0]),
+    Profile(user: currentUser),
     Dashboard(),
     Message(),
   ];
